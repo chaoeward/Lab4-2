@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>图书管理</title>
+<style type="text/css">
+.search {
+	background-color: #666;
+	text-align: right;
+}
+.ti {
+	background-color: #333;
+	color: #FF0;
+	text-align: center;
+	font-family: "Lucida Console", Monaco, monospace;
+}
+</style>
+</head>
+
+<body>
+<div class = "ti">
+<form action="" method="get">
+  <a href="/home/"><font size="+4" face="MS Serif, New York, serif"><strong>图书管理</strong></font></a>
+</form>
+</div>
+<div class="search">
+<form id="form1" name="form1" method="post" action="/search/">
+    <input type="text" name="target" id="1" value = "输入作者或书名：" onclick="value=''" />
+    <input type="submit" name="2" id="2" value="搜索" />
+</form>
+</div>
+<h1>作者信息：</h1>
+<table border=1 align="center">
+     <tr>
+      <th width="150">作者ID</th><th width="150">姓名</th><th width="150">年龄</th><th width="150">国家</th><th width="300">操作</th>
+     </tr>
+     {% for auth in trfo.0 %}
+     <tr>
+      <td>{{ auth.AuthorID }}</td>
+      <td>{{ auth.Name }}</td>
+      <td>{{ auth.Age }}</td>
+      <td>{{ auth.Country }}</td>
+      <td><a href="/delete1/?a_id={{ auth.AuthorID }}"><input  value="删除" type="button" /></a>
+      <a href="/add1/?a_id={{ auth.AuthorID }}"><input value="添加图书" type="button" /></a>
+      </td>
+     </tr>
+     {% endfor %}
+    </table>
+<a href="/add2/"><input value="添加作者" type="button" /></a>
+<h1>作者图书信息：</h1>
+<table border=1 align="center">
+     <tr>
+      <th width="150">ISBN</th><th width="150">书名</th><th width="150">作者</th><th width="150">出版商</th><th width="150">出版日期</th><th width="150">价格</th><th width="150">操作</th>
+     </tr>
+    {% for book in trfo.1 %}
+     <tr>
+      <td>{{ book.ISBN }}</td>
+      <td><a href="/inform/?b_is={{ book.ISBN }}">{{ book.Title }}</td></a>
+      <td>{{ book.AuthorID.Name }}</td>
+      <td>{{ book.Publisher }}</td>
+      <td>{{ book.Publisher_Date }}</td>
+      <td>{{ book.Price }}</td>
+      <td><form id="form1" name="form1" method="post" action="/delete2/">
+      <input type="text" name="target" id="2" value="{{ book.AuthorID.Name }}"style="display:none" />
+      <input type="text" name="b_isbn" id="3" value="{{ book.ISBN }}"style="display:none" />
+      <input type="submit" name="3" id="4" value="删除" /></td>
+     </tr>
+    {% endfor %}
+    </table>
+
+</body>
+</html>

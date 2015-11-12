@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>图书管理</title>
+<style type="text/css">
+.search {
+	background-color: #666;
+	text-align: right;
+}
+.ti {
+	background-color: #333;
+	color: #FF0;
+	text-align: center;
+	font-family: "Lucida Console", Monaco, monospace;
+}
+</style>
+</head>
+
+<body>
+<div class = "ti">
+<form action="" method="get">
+  <font size="+4" face="MS Serif, New York, serif"><strong>图书管理</strong></font>
+</form>
+</div>
+<div class="search">
+<form id="form1" name="form1" method="post" action="/search/">
+    <input type="text" name="target" id="1" value = "输入作者名：" onclick="value=''" />
+    <input type="submit" name="2" id="2" value="搜索" />
+</form>
+</div>
+
+<table border=1 align="center">
+     <tr>
+      <th width="150">ISBN</th><th width="150">书名</th><th width="150">作者</th><th width="150">出版商</th><th width="150">出版日期</th><th width="150">价格</th><th width="150">操作</th>
+     </tr>
+    {% for book in book_list %}
+     <tr>
+      <td>{{ book.ISBN }}</td>
+      <td><a href="/inform/?b_is={{ book.ISBN }}">{{ book.Title }}</td></a>
+      <td>{{ book.AuthorID.Name }}</td>
+      <td>{{ book.Publisher }}</td>
+      <td>{{ book.Publisher_Date }}</td>
+      <td>{{ book.Price }}</td>
+      <td><a href="/delete/?b_isbn={{ book.ISBN }}"><input  value="删除" type="button" /></a></td>
+     </tr>
+    {% endfor %}
+    </table>
+
+</body>
+</html>

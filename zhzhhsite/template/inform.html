@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>图书管理</title>
+<style type="text/css">
+.search {
+	background-color: #666;
+	text-align: right;
+}
+.ti {
+	background-color: #333;
+	color: #FF0;
+	text-align: center;
+	font-family: "Lucida Console", Monaco, monospace;
+}
+</style>
+</head>
+
+<body>
+<div class = "ti">
+<form action="" method="get">
+  <a href="/home/"><font size="+4" face="MS Serif, New York, serif"><strong>图书管理</strong></font></a>
+</form>
+</div>
+<div class="search">
+<form id="form1" name="form1" method="post" action="/search/">
+    <input type="text" name="target" id="1" value = "输入作者或书名：" onclick="value=''" />
+    <input type="submit" name="2" id="2" value="搜索" />
+</form>
+</div>
+<h1>作者信息：</h1>
+<table border=1 align="center">
+     <tr>
+      <th width="150">作者ID</th><th width="150">姓名</th><th width="150">年龄</th><th width="150">国家</th><th width="300">操作</th>
+     </tr>
+     <tr>
+      <td>{{ book.AuthorID.AuthorID }}</td>
+      <td>{{ book.AuthorID.Name }}</td>
+      <td>{{ book.AuthorID.Age }}</td>
+      <td>{{ book.AuthorID.Country }}</td>
+      <td><a href="/delete1/?a_id={{ auth.AuthorID }}"><input  value="删除" type="button" /></a>
+      <a href="/add1/?a_id={{ auth.AuthorID }}"><input value="添加图书" type="button" /></a>
+      </td>
+     </tr>
+    </table>
+<h1>作者图书信息：</h1>
+<table border=1 align="center">
+     <tr>
+      <th width="150">ISBN</th><th width="150">书名</th><th width="150">作者</th><th width="150">出版商</th><th width="150">出版日期</th><th width="150">价格</th><th width="150">操作</th>
+     </tr>
+     <tr>
+      <td>{{ book.ISBN }}</td>
+      <td>{{ book.Title }}</td>
+      <td>{{ book.AuthorID.Name }}</td>
+      <td>{{ book.Publisher }}</td>
+      <td>{{ book.Publisher_Date }}</td>
+      <td>{{ book.Price }}</td>
+      <td><a href="/delete2/?b_isbn={{ book.ISBN }}"><input  value="删除" type="button" /></a></td>
+     </tr>
+    </table>
+
+</body>
+</html>

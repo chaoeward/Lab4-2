@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>图书管理</title>
+<style type="text/css">
+.search {
+	background-color: #666;
+	text-align: right;
+}
+.ti {
+	background-color: #333;
+	color: #FF0;
+	text-align: center;
+	font-family: "Lucida Console", Monaco, monospace;
+}
+</style>
+</head>
+
+<body>
+<div class = "ti">
+<form action="" method="get">
+  <a href="/home/"><font size="+4" face="MS Serif, New York, serif"><strong>图书管理</strong></font></a>
+</form>
+</div>
+<div class="search">
+<form id="form1" name="form1" method="post" action="/search/">
+    <input type="text" name="target" id="1" value = "输入作者或书名：" onclick="value=''" />
+    <input type="submit" name="2" id="2" value="搜索" />
+</form>
+</div>
+<h1>作者信息：</h1>
+<form id="form1" name="form1" method="post" action="/add3/">
+<table border=1 align="center">
+     <tr>
+      <th width="150">作者ID</th><th width="150">姓名</th><th width="150">年龄</th><th width="150">国家</th><th width="150">操作</th>
+     </tr>
+     <tr>
+      <td><input name="aid" type="text"  value = "输入AuthorID" onclick="value=''"></td>
+      <td><input name="target" type="text"  value = "输入姓名" onclick="value=''"></td>
+      <td><input name="age" type="text"  value = "输入年龄" onclick="value=''"></td>
+      <td><input name="coun" type="text"  value = "输入国籍" onclick="value=''"></td>
+      <td><input  value="确定" type="submit" /></td>
+     </tr>
+    </table>
+</form>
+</body>
+</html>
