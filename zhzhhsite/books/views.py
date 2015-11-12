@@ -3,7 +3,7 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.template import Context
 from django.shortcuts import render_to_response
 from books.models import Books,Author
-
+#####################################################################
 def Show(request):
     books_l = Books.objects.all()
     c = Context({"book_list":books_l})
